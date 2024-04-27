@@ -1,4 +1,4 @@
-name: Update Recommend
+name: Update Stock Recommend
 
 on:
   schedule:
@@ -32,7 +32,7 @@ jobs:
       - name: Commit and push if changes
         run: |
           git config --global user.email "zzx123bill@gmail.com"
-          git config --global user.name "xinqilin"
+          git config --global user.name "bill.lin"
           git add .
           git commit -m "Automated stock report update" -a || echo "No changes to commit"
-          git push
+              git push https://${{ secrets.GITHUB_TOKEN }}@github.com/xinqilin/stockView.git
