@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Pull changes from remote
-        run: git pull origin main
+        run: git pull origin master
 
       - name: Update data
         run: python recommend.py
