@@ -35,4 +35,4 @@ jobs:
           git config --global user.name "bill.lin"
           git add .
           git commit -m "Automated stock report update" -a || echo "No changes to commit"
-              git push https://${{ secrets.GH_TOKEN }}@github.com/xinqilin/stockView.git
+          git push https://${{ secrets.GH_TOKEN }}@github.com/xinqilin/stockView.git
