@@ -2,7 +2,9 @@ name: Update Stock Data
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 每天UTC時間6點執行，即UTC+8時間下午2點
+     # 每天 UTC + 8 時間 2點
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
