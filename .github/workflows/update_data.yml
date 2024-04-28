@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 6 * * *'  # 每天UTC時間6點執行，即UTC+8時間下午2點
 
+permissions:
+  contents: write
+
 jobs:
   update-and-commit:
     runs-on: ubuntu-latest
@@ -27,7 +30,7 @@ jobs:
       - name: Commit and push if changes
         run: |
           git config --global user.email "zzx123bill@gmail.com"
-          git config --global user.name "bill.lin"
+          git config --global user.name "xinqilin"
           git add .
           git commit -m "Automated data update" -a || echo "No changes to commit"
-          git push https://${{ secrets.GH_TOKEN }}@github.com/xinqilin/stockView.git
+          git push
