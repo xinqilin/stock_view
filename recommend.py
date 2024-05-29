@@ -49,7 +49,7 @@ def generate_report(urls, parameters, limit=10):
     template = env.get_template('stock_report_template.html')
     html_output = template.render(stocks=df.to_dict(orient='records'))
 
-    with open('stock_report.html', 'w') as f:
+    with open('docs/stock_report.html', 'w') as f:
         f.write(html_output)
 
 
