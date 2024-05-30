@@ -25,7 +25,7 @@ def recommend_stock(url, parameters):
     return should_buy, should_sell, today_close_price, total_gains
 
 
-def generate_report(urls, parameters, limit=20):
+def generate_report(urls, parameters, limit=10):
     results = []
     for url in urls:
         try:
