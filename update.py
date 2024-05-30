@@ -38,6 +38,10 @@ def get_data_since_last_record(stock_num, base_path='./data/'):
 
     new_data = yf_data.get()
 
+    # Check if the directory exists, if not, create it
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
+
     if os.path.exists(csv_path):
         new_data.to_csv(csv_path, mode='a', header=False)
     else:
