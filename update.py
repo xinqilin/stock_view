@@ -1,12 +1,13 @@
 from datetime import datetime, timedelta
 import os
+from time import sleep
+
 import pandas as pd
 import pytz
 import vectorbt as vbt
 import twstock
 
 codes = twstock.codes
-
 
 def clean_csv(csv_path):
     """ Clean the CSV file by removing rows with incorrect number of columns. """
@@ -20,7 +21,6 @@ def clean_csv(csv_path):
         for line in lines:
             if len(line.split(',')) == num_columns:
                 file.write(line)
-
 
 def get_data_since_last_record(stock_num, base_path='./data/'):
     csv_path = f'{base_path}{stock_num}.csv'
@@ -58,17 +58,12 @@ def get_data_since_last_record(stock_num, base_path='./data/'):
 
     new_data = yf_data.get()
 
-    # Check if the directory exists, if not, create it
-    if not os.path.exists(base_path):
-        os.makedirs(base_path)
-
     if os.path.exists(csv_path):
         new_data.to_csv(csv_path, mode='a', header=False)
     else:
         new_data.to_csv(csv_path)
-
+    sleep(1) # Sleep for 5 seconds to avoid rate limiting
     return new_data
-
 
 for k, v in codes.items():
     if v.market == '上市' and (v.type == '股票' or v.type == 'ETF'):
